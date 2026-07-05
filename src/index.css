@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #0c4a6e;
+  --color-primary-light: #38bdf8;
+}
+
+/* Ensure the equation callout blocks are clear, high-contrast, and beautiful */
+.prose div.bg-gray-100,
+.prose div.bg-slate-100,
+.prose div[class*="bg-gray-100"],
+.prose div[class*="bg-slate-100"],
+div.bg-gray-100.dark\:bg-zinc-800,
+div.bg-slate-100.dark\:bg-zinc-800 {
+  background-color: #f0f9ff !important; /* Soft, eye-pleasing light blue */
+  color: #0369a1 !important; /* Deep ocean blue for perfect contrast */
+  border: 1px solid #bae6fd !important; /* Soft blue border to frame the equation */
+  font-weight: 800 !important;
+  font-size: 1.125rem !important; /* 18px text */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  border-radius: 0.75rem !important; /* Fully rounded corners */
+}
+
+/* Ensure perfect visibility in dark mode */
+.dark .prose div.bg-gray-100,
+.dark .prose div.bg-slate-100,
+.dark .prose div[class*="bg-gray-100"],
+.dark .prose div[class*="bg-slate-100"],
+.dark div.bg-gray-100.dark\:bg-zinc-800,
+.dark div.bg-slate-100.dark\:bg-zinc-800 {
+  background-color: #0f172a !important; /* Deep slate / black background */
+  color: #38bdf8 !important; /* Very bright sky blue for extreme high-contrast readability */
+  border: 1.5px solid #0284c7 !important; /* Distinct blue border */
+}
+
+/* ==========================================================
+   Comfortable Reading Mode Styles
+   ========================================================== */
+
+/* 1. SEPIA THEME */
+.reading-sepia {
+  background-color: #faf4e8 !important;
+  color: #433422 !important;
+  border-color: #e6d3b3 !important;
+}
+.reading-sepia h1,
+.reading-sepia h2,
+.reading-sepia h3,
+.reading-sepia h4,
+.reading-sepia h5,
+.reading-sepia h6,
+.reading-sepia strong {
+  color: #2e2010 !important;
+}
+.reading-sepia p,
+.reading-sepia li,
+.reading-sepia span {
+  color: #433422 !important;
+}
+/* Style the formula cards in sepia */
+.reading-sepia .bg-slate-50,
+.reading-sepia .bg-slate-100,
+.reading-sepia .bg-gray-150,
+.reading-sepia .bg-gray-100,
+.reading-sepia div[class*="bg-slate-50"],
+.reading-sepia div[class*="bg-slate-100"],
+.reading-sepia div[class*="bg-gray-100"] {
+  background-color: #f3ebd6 !important;
+  color: #5d411b !important;
+  border-color: #dfcca1 !important;
+}
+.reading-sepia div.font-mono.text-\[\#0c4a6e\] {
+  color: #854d0e !important; /* Deep amber for math equations in sepia */
+}
+/* Style the key points warning in sepia */
+.reading-sepia .bg-amber-50\/50,
+.reading-sepia .bg-amber-50 {
+  background-color: #f7eed3 !important;
+  border-color: #e0cc9f !important;
+  color: #5c3b16 !important;
+}
+.reading-sepia .text-amber-700,
+.reading-sepia .text-amber-800 {
+  color: #78350f !important;
+}
+.reading-sepia .text-slate-500,
+.reading-sepia .text-slate-600 {
+  color: #6e5e4e !important;
+}
+
+/* 2. DARK THEME OVERRIDES */
+.reading-dark {
+  background-color: #0b0f19 !important;
+  color: #cbd5e1 !important;
+  border-color: #1e293b !important;
+}
+.reading-dark h1,
+.reading-dark h2,
+.reading-dark h3,
+.reading-dark h4,
+.reading-dark h5,
+.reading-dark h6,
+.reading-dark strong {
+  color: #ffffff !important;
+}
+.reading-dark p,
+.reading-dark li,
+.reading-dark span {
+  color: #cbd5e1 !important;
+}
+/* Style the formula cards in reading-dark */
+.reading-dark .bg-slate-50,
+.reading-dark .bg-slate-100,
+.reading-dark .bg-gray-150,
+.reading-dark .bg-gray-100,
+.reading-dark div[class*="bg-slate-50"],
+.reading-dark div[class*="bg-slate-100"],
+.reading-dark div[class*="bg-gray-100"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+.reading-dark div.font-mono.text-\[\#0c4a6e\] {
+  color: #38bdf8 !important; /* Bright sky blue for math equations in dark */
+}
+/* Style the key points warning in reading-dark */
+.reading-dark .bg-amber-50\/50,
+.reading-dark .bg-amber-50 {
+  background-color: #1e1b15 !important;
+  border-color: #78350f !important;
+  color: #fbbf24 !important;
+}
+.reading-dark .text-amber-700,
+.reading-dark .text-amber-800 {
+  color: #fcd34d !important;
+}
+.reading-dark .text-slate-500,
+.reading-dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
