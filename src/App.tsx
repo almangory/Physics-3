@@ -32,6 +32,71 @@ type ActivePage = 'dashboard' | 'favorites' | 'chapters' | 'labs' | 'flashcards'
 
 export default function App() {
   const [activePage, setActivePage] = useState<ActivePage>('dashboard');
+
+  // Synchronize browser history and handle back navigation for mobile & desktop
+  useEffect(() => {
+    // Replace the current state with 'exit' and push the initial 'dashboard' state
+    window.history.replaceState({ page: 'exit' }, '');
+    window.history.pushState({ page: 'dashboard' }, '');
+    
+    const handlePopState = (event: PopStateEvent) => {
+      const state = event.state;
+      if (state && state.page) {
+        if (state.page === 'exit') {
+          const confirmExit = window.confirm("هل أنت متأكد من رغبتك في مغادرة منصة الفيزياء التفاعلية؟");
+          if (confirmExit) {
+            window.history.back();
+          } else {
+            // Put 'dashboard' back into the history stack so they stay
+            window.history.pushState({ page: 'dashboard' }, '');
+            setActivePage('dashboard');
+          }
+        } else {
+          setActivePage(state.page as ActivePage);
+        }
+      } else {
+        const confirmExit = window.confirm("هل أنت متأكد من رغبتك في مغادرة منصة الفيزياء التفاعلية؟");
+        if (confirmExit) {
+          window.history.back();
+        } else {
+          window.history.pushState({ page: 'dashboard' }, '');
+          setActivePage('dashboard');
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
+  // Sync state changes with pushState so the back button is populated when we click nav buttons
+  useEffect(() => {
+    const currentState = window.history.state;
+    if (currentState && currentState.page !== activePage && activePage !== 'dashboard') {
+      window.history.pushState({ page: activePage }, '');
+    } else if (activePage === 'dashboard') {
+      if (!currentState || currentState.page !== 'dashboard') {
+        window.history.pushState({ page: 'dashboard' }, '');
+      }
+    }
+  }, [activePage]);
+
+  // Handle reload/tab closure warning
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      // Most modern browsers will ignore custom text, but we keep it standard
+      e.returnValue = 'هل أنت متأكد من رغبتك في مغادرة منصة الفيزياء التفاعلية؟';
+      return 'هل أنت متأكد من رغبتك في مغادرة منصة الفيزياء التفاعلية؟';
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   const [favoriteLessonIds, setFavoriteLessonIds] = useState<string[]>([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
