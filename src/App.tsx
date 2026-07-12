@@ -718,7 +718,7 @@ export default function App() {
                   <div className="space-y-3">
                     <h2 className="text-lg font-black text-slate-850 flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
-                      الباب الأول: المجال الثقالي
+                      الباب الأول: المجال التثقالي
                     </h2>
                     
                     {/* Card 1: Interactive Gravity Simulator */}
@@ -1162,7 +1162,7 @@ export default function App() {
                                 className="w-full p-2 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 font-bold"
                               >
                                 <option value="all">كافة فصول المنهج الأربعة</option>
-                                <option value="chap-1">الباب الأول: المجال الثقالي</option>
+                                <option value="chap-1">الباب الأول: المجال التثقالي</option>
                                 <option value="chap-2">الباب الثاني: الموجات والضوء</option>
                                 <option value="chap-3">الباب الثالث: الكهربية والمغناطيسية</option>
                                 <option value="chap-4">الباب الرابع: الفيزياء الحديثة والاتصالات</option>
